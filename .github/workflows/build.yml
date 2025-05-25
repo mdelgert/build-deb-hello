@@ -1,18 +1,36 @@
-name: Build Debian package
+name: Build and Release Debian Package
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
+    tags:
+      - 'v*.*.*'
 
 jobs:
-  build:
+  build-deb:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up build dependencies
-        run: sudo apt-get update && sudo apt-get install -y devscripts debhelper
-      - name: Build deb
-        uses: jtdor/build-deb-action@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Debian package
+        uses: jtdor/build-deb-action@v1
         with:
-          source-root: .
+          buildpackage-opts: --build=binary --no-sign
+          artifacts-dir: ./artifacts
+        env:
+          DEB_BUILD_OPTIONS: noautodbgsym
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-packages
+          path: ./artifacts/*.deb
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./artifacts/*.deb
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
