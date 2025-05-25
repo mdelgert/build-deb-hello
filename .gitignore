@@ -1,0 +1,18 @@
+# Debhelper and build directories
+.debhelper/
+debhelper-build-stamp
+debian/build-deb-hello/
+build-deb-hello
+build-deb-hello.substvars
+
+# Build artifacts (in parent dir)
+../*.deb
+../*.build
+../*.buildinfo
+../*.changes
+../*.dsc
+../*.tar.*
+
+# Editor/OS files
+*~
+*.swp

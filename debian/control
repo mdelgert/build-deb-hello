@@ -6,4 +6,7 @@ Standards-Version: 4.5.0
 
 Package: build-deb-hello
 Architecture: all
+Depends: ${misc:Depends}
 Description: Simple hello world package for Debian
+ A minimal package that installs a hello-world script to /usr/bin/hello.sh.
+ Useful for learning Debian packaging basics.

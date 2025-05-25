@@ -1,6 +1,1 @@
-build-deb-hello install
-======================
-
-This package installs a simple hello-world script to /usr/bin/hello.sh.
-
 src/hello.sh usr/bin/hello.sh
