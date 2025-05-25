@@ -1,1 +1,2 @@
-src/hello.sh usr/bin/hello.sh
+src/hello usr/bin/
+debian/hello.1 usr/share/man/man1/

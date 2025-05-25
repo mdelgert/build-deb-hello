@@ -1,4 +1,4 @@
-build-deb-hello (0.1) stable; urgency=low
+build-deb-hello (0.1) unstable; urgency=low
 
   * Initial release
 
