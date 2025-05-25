@@ -30,7 +30,7 @@ jobs:
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
         with:
-          name: hello-debian
+          name: build-deb-hello
           path: build-artifacts/*.deb
 
       - name: Create Release
