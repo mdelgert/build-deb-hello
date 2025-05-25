@@ -1,0 +1,1 @@
+sudo dpkg -i build-artifacts/build-deb-hello_0.1_all.deb
