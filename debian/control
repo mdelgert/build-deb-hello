@@ -1,0 +1,9 @@
+Source: build-deb-hello
+Section: utils
+Priority: optional
+Maintainer: Your Name <your@email.com>
+Standards-Version: 4.5.0
+
+Package: build-deb-hello
+Architecture: all
+Description: Simple hello world package for Debian
