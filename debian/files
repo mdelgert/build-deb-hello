@@ -1,2 +1,2 @@
-build-deb-hello_0.1-1_all.deb utils optional
-build-deb-hello_0.1-1_amd64.buildinfo utils optional
+build-deb-hello_0.1_all.deb utils optional
+build-deb-hello_0.1_amd64.buildinfo utils optional
