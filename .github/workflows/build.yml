@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y debhelper devscripts
+
       - name: Build Debian package
         uses: jtdor/build-deb-action@v1
         with:
