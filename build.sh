@@ -7,4 +7,4 @@
 rm -rf ../*.deb ../*.changes ../*.build ../*.buildinfo
 rm -rf ../*.dsc ../*.tar.xz ../*.tar.gz
 
-#debuild -us -uc
+debuild -us -uc
