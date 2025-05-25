@@ -1,8 +1,9 @@
 Source: build-deb-hello
 Section: utils
 Priority: optional
-Maintainer: Matthew Elgert mdelgert@yahoo.com
+Maintainer: Matthew Elgert <mdelgert@yahoo.com>
 Standards-Version: 4.5.0
+Build-Depends: debhelper (>= 11)
 
 Package: build-deb-hello
 Architecture: all

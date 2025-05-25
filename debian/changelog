@@ -2,4 +2,4 @@ build-deb-hello (0.1-1) unstable; urgency=low
 
   * Initial release
 
- -- Matthew Elgert mdelgert@yahoo.com  Sat, 24 May 2025 12:00:00 +0000
+ -- Matthew Elgert <mdelgert@yahoo.com>  Sat, 24 May 2025 12:00:00 +0000
