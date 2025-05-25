@@ -1,4 +1,4 @@
-name: Build and Release Debian Package
+name: Build Debian Package
 
 on:
   push:
@@ -6,24 +6,31 @@ on:
       - 'v*.*.*'
 
 jobs:
-  build-deb:
-    # runs-on: ubuntu-latest
-    runs-on: ubuntu-24.04
+  build:
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install build dependencies
-        run: sudo apt-get update && sudo apt-get install -y devscripts debhelper fakeroot build-essential lintian
-
-      - name: Build Debian package
+      - name: Install build tools
         run: |
-          ./build.sh
+          sudo apt update
+          sudo apt install -y devscripts build-essential debhelper fakeroot
 
-      - name: Upload artifacts
+      - name: Build the .deb package
+        run: |
+          dpkg-buildpackage -us -uc -b
+
+      - name: Move .deb files into workspace
+        run: |
+          mkdir -p build-artifacts
+          mv ../*.deb build-artifacts/
+
+      - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
         with:
-          name: debian-packages
+          name: hello-debian
           path: build-artifacts/*.deb
 
       - name: Create Release

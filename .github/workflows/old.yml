@@ -1,0 +1,36 @@
+name: Build and Release Debian Package
+
+on:
+  push:
+    # tags:
+    #   - 'v*.*.*'
+
+jobs:
+  build-deb:
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y devscripts debhelper fakeroot build-essential lintian
+
+      - name: Build Debian package
+        run: |
+          ./build.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-packages
+          path: build-artifacts/*.deb
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build-artifacts/*.deb
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
